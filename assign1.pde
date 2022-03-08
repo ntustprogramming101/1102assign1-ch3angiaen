@@ -12,6 +12,8 @@ float robotX, robotY;
 float lazorStart, lazorEnd, lazorY, lazorSpeed;
 
 void setup() {
+  size(640, 480, P2D);
+  // Enter Your Setup Code Here
   // load images
   bgImg = loadImage("img/bg.jpg");
   groundHog = loadImage("img/groundhog.png");
