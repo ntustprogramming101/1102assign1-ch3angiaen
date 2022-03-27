@@ -26,7 +26,7 @@ void setup() {
   robotY = 160+80*(floor(random(4)));
   robotX = random(160,width-ROBOT_W);
   lazorStart = robotX+LAZOR_DEV;
-  lazorEnd = lazorStart;
+  lazorEnd = lazorStart-LAZOR_MAX;
   lazorY = robotY+37;
   lazorSpeed = 2;
   
@@ -76,14 +76,13 @@ void draw() {
   // set up the lazor
   lazorEnd -= lazorSpeed;
   
-  if(robotX-lazorEnd>LAZOR_MAX-LAZOR_DEV){
-    if(robotX-lazorEnd>160){
-    lazorEnd = robotX+LAZOR_DEV;
-    }
+  if(robotX-lazorEnd<160){
+    if(lazorStart-lazorEnd<=LAZOR_MAX){
+    lazorStart = robotX+LAZOR_DEV;}
     lazorStart = lazorEnd+LAZOR_MAX;
-  }else{
-    lazorStart = robotX+LAZOR_DEV;
-  }
+    }else{
+      lazorStart = robotX+LAZOR_DEV;
+    lazorEnd = lazorStart-LAZOR_MAX;}
   
   colorMode( RGB );
   stroke( 255, 0, 0 );
